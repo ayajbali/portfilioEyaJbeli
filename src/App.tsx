@@ -105,7 +105,7 @@ const App = () => {
           <p className="hero-sub">Helping companies find opportunities, build partnerships and scale their impact through smart digital solutions.</p>
           <div className="hero-btns">
            <a href="#work" className="btn-primary"
-  onClick={() => trackEvent('click_cta', {
+  onClick={() => trackEvent('click_cta_workview', {
     button_name: 'View My Work',
     section: 'hero',
     page_location: '/'
@@ -113,7 +113,7 @@ const App = () => {
   View My Work →
 </a>
             <a href="#contact" className="btn-outline"
-  onClick={() => trackEvent('click_cta', {
+  onClick={() => trackEvent('click_cta_contact', {
     button_name: 'Contact Me',
     section: 'hero',
     page_location: '/'
@@ -171,7 +171,7 @@ const App = () => {
           <h2 className="section-title reveal reveal-delay-1">Professional Journey</h2>
           <p className="section-sub reveal reveal-delay-2" style={{ margin: "0 auto 2.5rem" }}>Discover my professional journey, experience and achievements in business development, sales and marketing.</p>
           <a href="#contact" className="btn-primary reveal reveal-delay-3"
-  onClick={() => trackEvent('click_cta', {
+  onClick={() => trackEvent('click_cta_download', {
     button_name: 'Download Resume',
     section: 'cv',
     page_location: '/'
@@ -275,7 +275,7 @@ const App = () => {
             <h3>Ready to grow your <span>business together?</span></h3>
             <p>Whether you need a business development expert, a strategic marketing partner, or someone who can bridge IT capabilities with real client value — let's talk.</p>
             <a href="mailto:jbely.eyaa@gmail.com" className="btn-primary"
-  onClick={() => trackEvent('click_cta', {
+  onClick={() => trackEvent('click_cta_mail', {
     button_name: 'Send Email',
     section: 'contact',
     page_location: '/'
