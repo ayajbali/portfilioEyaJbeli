@@ -1,6 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import "./index.css";
 
+// Déclarer gtag pour TypeScript
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
+  }
+}
+
+// Fonction de tracking réutilisable
+const trackEvent = (eventName: string, params: Record<string, string>) => {
+  if (typeof window.gtag !== 'undefined') {
+    window.gtag('event', eventName, params);
+  }
+};
+
 const workItems = [
   { tag: "IT Services", title: "IT Services Business Development", desc: "Representing Consultim-IT in B2B events and digital marketplaces to generate qualified leads and expand the company's client portfolio internationally." },
   { tag: "Sales", title: "Lead Generation Campaigns", desc: "Designed and executed targeted international prospecting campaigns, increasing pipeline volume through LinkedIn outreach and email campaigns." },
@@ -90,8 +104,22 @@ const App = () => {
           <h1 className="hero-title">Driving Business Growth<br />in the <em>Digital & IT</em> World</h1>
           <p className="hero-sub">Helping companies find opportunities, build partnerships and scale their impact through smart digital solutions.</p>
           <div className="hero-btns">
-            <a href="#work" className="btn-primary">View My Work →</a>
-            <a href="#contact" className="btn-outline">Contact Me</a>
+           <a href="#work" className="btn-primary"
+  onClick={() => trackEvent('click_cta', {
+    button_name: 'View My Work',
+    section: 'hero',
+    page_location: '/'
+  })}>
+  View My Work →
+</a>
+            <a href="#contact" className="btn-outline"
+  onClick={() => trackEvent('click_cta', {
+    button_name: 'Contact Me',
+    section: 'hero',
+    page_location: '/'
+  })}>
+  Contact Me
+</a>
           </div>
         </div>
         <div className="hero-scroll">Scroll
@@ -142,7 +170,14 @@ const App = () => {
           <span className="section-tag reveal">My Resume</span>
           <h2 className="section-title reveal reveal-delay-1">Professional Journey</h2>
           <p className="section-sub reveal reveal-delay-2" style={{ margin: "0 auto 2.5rem" }}>Discover my professional journey, experience and achievements in business development, sales and marketing.</p>
-          <a href="#contact" className="btn-primary reveal reveal-delay-3">↓ Download Resume (PDF)</a>
+          <a href="#contact" className="btn-primary reveal reveal-delay-3"
+  onClick={() => trackEvent('click_cta', {
+    button_name: 'Download Resume',
+    section: 'cv',
+    page_location: '/'
+  })}>
+  ↓ Download Resume (PDF)
+</a>
         </div>
       </section>
 
@@ -239,7 +274,14 @@ const App = () => {
           <div className="contact-right reveal reveal-delay-2">
             <h3>Ready to grow your <span>business together?</span></h3>
             <p>Whether you need a business development expert, a strategic marketing partner, or someone who can bridge IT capabilities with real client value — let's talk.</p>
-            <a href="mailto:jbely.eyaa@gmail.com" className="btn-primary">✉ Send Email</a>
+            <a href="mailto:jbely.eyaa@gmail.com" className="btn-primary"
+  onClick={() => trackEvent('click_cta', {
+    button_name: 'Send Email',
+    section: 'contact',
+    page_location: '/'
+  })}>
+  ✉ Send Email
+</a>
           </div>
         </div>
       </section>
@@ -248,7 +290,17 @@ const App = () => {
         <div className="footer-name">Eya<span>.</span> Jbeli</div>
         <div className="footer-copy">© 2026 Eya Jbeli. All rights reserved.</div>
         <div className="footer-social">
-          <a href="https://linkedin.com/in/eya-jbeli" target="_blank" rel="noreferrer" title="LinkedIn">in</a>
+         <a href="https://linkedin.com/in/eya-jbeli" 
+  target="_blank"
+  rel="noreferrer"
+  title="LinkedIn"
+  onClick={() => trackEvent('click_social', {
+    platform: 'LinkedIn',
+    section: 'footer',
+    page_location: '/'
+  })}>
+  in
+</a>
           <a href="mailto:jbely.eyaa@gmail.com" title="Email">✉</a>
           <a href="tel:+21655835212" title="Phone">☏</a>
         </div>
