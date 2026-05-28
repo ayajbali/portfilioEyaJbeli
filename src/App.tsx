@@ -190,7 +190,14 @@ const App = () => {
         </div>
         <div className="work-grid">
           {workItems.map((w, i) => (
-            <div key={w.title} className={`work-card reveal reveal-delay-${(i % 4) + 1}`}>
+            {workItems.map((w, i) => (
+  <div key={w.title}
+    className={`work-card reveal reveal-delay-${(i % 4) + 1}`}
+    onClick={() => trackEvent('project_click', {
+      project_name: w.title,
+      project_type: w.tag,
+      section_name: 'work'
+    })}>
               <span className="work-tag">{w.tag}</span>
               <h3>{w.title}</h3>
               <p>{w.desc}</p>
