@@ -9,7 +9,7 @@ declare global {
 }
 
 // Fonction de tracking réutilisable
-const trackEvent = (eventName: string, params: Record<string, string>) => {
+const trackEvent = (eventName: string, params: Record<string, string | number>) => {
   if (typeof window.gtag !== 'undefined') {
     window.gtag('event', eventName, params);
   }
@@ -116,7 +116,9 @@ const App = () => {
   onClick={() => trackEvent('click_cta_contact', {
     button_name: 'Contact Me',
     section: 'hero',
-    page_location: '/'
+   page_location: '/',
+    value: 8,
+    currency: 'TND'
   })}>
   Contact Me
 </a>
@@ -174,7 +176,9 @@ const App = () => {
   onClick={() => trackEvent('click_cta_download', {
     button_name: 'Download Resume',
     section: 'cv',
-    page_location: '/'
+    page_location: '/',
+    value: 7,
+    currency: 'TND'
   })}>
   ↓ Download Resume (PDF)
 </a>
@@ -284,7 +288,9 @@ const App = () => {
   onClick={() => trackEvent('click_cta_mail', {
     button_name: 'Send Email',
     section: 'contact',
-    page_location: '/'
+     page_location: '/',
+    value: 10,
+    currency: 'TND'
   })}>
   ✉ Send Email
 </a>
